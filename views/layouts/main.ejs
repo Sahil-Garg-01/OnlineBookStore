@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/header') %>
+
+<body>
+    <%- include('../partials/navbar') %>       
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1>Welcome to BookStore</h1>
+            <p class="lead">Discover your next favorite book</p>
+            <a href="/books" class="btn btn-primary btn-lg">Browse Books</a>
+        </div>
+    </section>
+
+    <!-- Featured Books Section -->
+    <section class="featured-books">
+        <div class="container">
+            <h2 class="text-center mb-4">Featured Books</h2>
+            <div class="row">
+                <% for(let i = 0; i < 4; i++) { %>
+                    <div class="col-md-3">
+                        <div class="card book-card">
+                            <img src="/api/placeholder/200/300" class="card-img-top" alt="Book Cover">
+                            <div class="card-body">
+                                <h5 class="card-title">Book Title</h5>
+                                <p class="card-text">Author Name</p>
+                                <p class="card-text"><strong>$19.99</strong></p>
+                                <a href="#" class="btn btn-primary w-100">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Browse Categories</h2>
+            <div class="row text-center">
+                <div class="col-md-3 mb-3">
+                    <div class="p-3 bg-white rounded shadow-sm">
+                        <i class="fas fa-book-open mb-3" style="font-size: 2rem;"></i>
+                        <h5>Fiction</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="p-3 bg-white rounded shadow-sm">
+                        <i class="fas fa-atom mb-3" style="font-size: 2rem;"></i>
+                        <h5>Science</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="p-3 bg-white rounded shadow-sm">
+                        <i class="fas fa-history mb-3" style="font-size: 2rem;"></i>
+                        <h5>History</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="p-3 bg-white rounded shadow-sm">
+                        <i class="fas fa-brain mb-3" style="font-size: 2rem;"></i>
+                        <h5>Psychology</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<%- include('../partials/footer') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
