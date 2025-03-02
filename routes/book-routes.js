@@ -1,9 +1,10 @@
 const express=require("express")
 const router = express.Router();
-const {createbook}=require("../controllers/book-controller")
+const {createbook,getAllBooks}=require("../controllers/book-controller")
+const {upload}=require("../middlewares/multer")
 
-router.post('/',createbook);
-// router.get('/', bookController.getAllBooks);
+router.post('/create',upload.single("image"),createbook);
+router.get('/', getAllBooks);
 // router.get('/:id', bookController.getBookById);
 // router.use(authenticateUser, isAdmin); // Admin only routes below
 // router.put('/:id', bookController.updateBook);

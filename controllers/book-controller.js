@@ -3,9 +3,13 @@ const {Book}=require("../models/book-model")
 
 async function createbook(req,res){
         try {
+          if (req.file) {
+            req.body.image = `/uploads/${req.file.filename}`; // Save the path to the image
+        }
             const book = new Book(req.body);
             await book.save();
-            res.redirect('/admin/books');
+
+            return res.redirect('/books');
           } catch (error) {
             res.status(400).render('error', { message: error.message });
           }
@@ -13,14 +17,14 @@ async function createbook(req,res){
 
 
   
-    // getAllBooks: async (req, res) => {
-    //   try {
-    //     const books = await Book.find();
-    //     res.render('books/index', { books });
-    //   } catch (error) {
-    //     res.status(500).render('error', { message: error.message });
-    //   }
-    // },
+    async function getAllBooks(req, res){
+      try {
+        const books = await Book.find();
+        res.render('layouts/allbooks', { books });
+      } catch (error) {
+        res.status(500).render('error', { message: error.message });
+      }
+    }
   
     // getBookById: async (req, res) => {
     //   try {
@@ -62,5 +66,5 @@ async function createbook(req,res){
     //   }
     // }
 
-module.exports={createbook}
+module.exports={createbook,getAllBooks}
   

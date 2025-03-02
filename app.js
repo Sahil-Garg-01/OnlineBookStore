@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes=require("./routes/auth-routes")
+const bookRoutes=require("./routes/book-routes")
 const session = require('express-session');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
@@ -25,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(checkauth)
 // app.use(methodOverride('_method'));
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 // View engine setup
 app.set('view engine', 'ejs');
@@ -37,7 +38,9 @@ app.get('/',(req,res)=>{
 })
 
 
-
+app.get("/admin-create",(req,res)=>{
+  return res.render('admin/book-form');
+});
 app.use('/', authRoutes);
 app.use('/books', bookRoutes);
 // app.use('/orders', orderRoutes);

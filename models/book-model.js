@@ -11,11 +11,15 @@ const bookSchema = new mongoose.Schema({
       required: true,
       trim: true
     },
-    
+
+    image:{
+      type:String
+    },
+
     category: {
       type: String,
+      trim: true,
       
-      trim: true
     },
     price: {
       type: Number,
@@ -28,7 +32,7 @@ const bookSchema = new mongoose.Schema({
     },
     publishedDate: {
       type: Date,
-      default: Date.now
+      default: Date.now(),
     }
   }, {
     timestamps: true
